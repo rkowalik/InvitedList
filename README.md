@@ -1,7 +1,7 @@
 # InvitedList
 
 ###### O Projekcie
-Aplikacja do wprowadzania, kategoryzowania i analizy danych o gościach weselnych.
+Aplikacja do wprowadzania, kategoryzowania i analizy danych o gościach weselnych. Projekt aktualnie rozwijany w wolnym czasie.
 
 Posiada możliwości dodawania gości o różnych typach (osoba dorosła, dorosły z osobą towarzyszącą, dziecko i dziecko liczone jak dorosły) zgrupowanych w rodziny.
 
