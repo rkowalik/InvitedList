@@ -7,42 +7,48 @@ import java.util.Comparator;
 
 public class Family implements Serializable {
     private static final long serialVersionUID = 1L;
-    private ArrayList<Invited> inviters;
+    private ArrayList<Invited> invitedList;
     private String surname;
     private boolean required, profitable;
     private int adultSum, adultWithCompSum, childSum, childAsAdultSum;
     
     public Family() {
-        inviters = new ArrayList();
+        invitedList = new ArrayList();
     }
     
-    public void addInviter (Invited inviter) {
-        inviters.add(inviter);
-        calculateInvitersQty();
+    public void addInvited (Invited inv) {
+        invitedList.add(inv);
+        calculateInvitedQty();
     }
     
-    public void removeInviter(int index) {
-        inviters.remove(index);
-        calculateInvitersQty();
+    public void removeInvited(int index) {
+        invitedList.remove(index);
+        calculateInvitedQty();
     }
     
-    public String getInvitersNames() 
+    public String getInvitedNames() {
+        StringBuilder sb = new StringBuilder();
+        for(Invited inv : invitedList) {
+            sb.append(inv.getName() + ", ");
+        }
+        return sb.toString();
+    }
     
-    public void calculateInvitersQty() {
+    public void calculateInvitedQty() {
         adultSum = 0; adultWithCompSum = 0; childSum = 0; childAsAdultSum = 0;
         
-        for (Invited inv : inviters) {
-            Invited.InviterType type = inv.getType();
-            if (type == Invited.InviterType.ADULT) {
+        for (Invited inv : invitedList) {
+            Invited.InvitedType type = inv.getType();
+            if (type == Invited.InvitedType.ADULT) {
                 ++adultSum;
             }
-            if (type == Invited.InviterType.ADULT_WITH_COMPANION) {
+            if (type == Invited.InvitedType.ADULT_WITH_COMPANION) {
                 ++adultWithCompSum;
             }
-            if (type == Invited.InviterType.CHILD_AS_ADULT) {
+            if (type == Invited.InvitedType.CHILD_AS_ADULT) {
                 ++childAsAdultSum;
             }
-            if (type == Invited.InviterType.CHILD) {
+            if (type == Invited.InvitedType.CHILD) {
                 ++childSum;
             }
         }
@@ -57,7 +63,7 @@ public class Family implements Serializable {
 
     @Override
     public String toString() {
-        return "Family{" + "inviters=" + inviters + ", surname=" + surname + ", required=" + required + ", profitable=" + profitable + '}';
+        return "Family{" + "inviters=" + invitedList + ", surname=" + surname + ", required=" + required + ", profitable=" + profitable + '}';
     }
 
     public boolean isRequired() {
@@ -82,11 +88,11 @@ public class Family implements Serializable {
     }
 
     public ArrayList<Invited> getInviters() {
-        return inviters;
+        return invitedList;
     }
 
     public void setInviters(ArrayList<Invited> inviters) {
-        this.inviters = inviters;
+        this.invitedList = inviters;
     }
 
     public String getSurname() {

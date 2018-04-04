@@ -3,14 +3,14 @@ package InvitedList;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class InvitersManager implements Serializable {
+public class InvitedManager implements Serializable {
     private static final long serialVersionUID = 1L;
     private ArrayList<Family> families;
     private float adultCost = 0, childCost = 0;
     
     
     
-    public InvitersManager() {
+    public InvitedManager() {
         families = new ArrayList();
     }
     
@@ -26,7 +26,7 @@ public class InvitersManager implements Serializable {
         families.remove(index);
     }
 
-    public InvitersManager(ArrayList<Family> families) {
+    public InvitedManager(ArrayList<Family> families) {
         this.families = families;
     }
 

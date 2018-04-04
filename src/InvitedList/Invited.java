@@ -12,7 +12,7 @@ public class Invited implements Serializable {
     private String name;
     private InvitedType type;
     
-    private final static String [] inviterTypesDescriptions = {"osoba dorosła", 
+    private final static String [] invitedTypesDescriptions = {"osoba dorosła", 
         "dorosły z os. towarzyszącą", "dziecko liczone jako dorosły", "dziecko"};
 
     public Invited(String name, InvitedType type) {
@@ -26,16 +26,16 @@ public class Invited implements Serializable {
     }
     
     public static InvitedType getTypeByDescription(String description) {
-        if (description.equals(inviterTypesDescriptions[0])) {
+        if (description.equals(invitedTypesDescriptions[0])) {
             return InvitedType.ADULT;
         }
-        if (description.equals(inviterTypesDescriptions[1])) {
+        if (description.equals(invitedTypesDescriptions[1])) {
             return InvitedType.ADULT_WITH_COMPANION;
         }
-        if (description.equals(inviterTypesDescriptions[2])) {
+        if (description.equals(invitedTypesDescriptions[2])) {
             return InvitedType.CHILD_AS_ADULT;
         }
-        if (description.equals(inviterTypesDescriptions[3])) {
+        if (description.equals(invitedTypesDescriptions[3])) {
             return InvitedType.CHILD;
         }
         throw new IllegalArgumentException("Invalid description: " + description);
@@ -44,22 +44,22 @@ public class Invited implements Serializable {
     
     public String getDescription() {
         if (type == InvitedType.ADULT) {
-            return inviterTypesDescriptions[0];
+            return invitedTypesDescriptions[0];
         }
         if (type == InvitedType.ADULT_WITH_COMPANION) {
-            return inviterTypesDescriptions[1];
+            return invitedTypesDescriptions[1];
         }
         if (type == InvitedType.CHILD_AS_ADULT) {
-            return inviterTypesDescriptions[2];
+            return invitedTypesDescriptions[2];
         }
         if (type == InvitedType.CHILD) {
-            return inviterTypesDescriptions[3];
+            return invitedTypesDescriptions[3];
         }
         throw new IllegalArgumentException("Invalid Inviter's type.");
     }
 
-    public static String[] getInviterTypesDescriptions() {
-        return inviterTypesDescriptions;
+    public static String[] getInvitedTypesDescriptions() {
+        return invitedTypesDescriptions;
     }
 
     public InvitedType getType() {
@@ -83,38 +83,6 @@ public class Invited implements Serializable {
     @Override
     public String toString() {
         return "Imię: " + name + ", typ: " + type; 
-        
-//        StringBuilder s = new StringBuilder();
-//        String req;
-//        if (isRequired) req = "[wymagana]";
-//        else req = "[opcjonalna]";
-//        
-//        String result =  String.format("%-30s %-20s %2d dorosłych %2d dzieci", 
-//                surname, req, adultsQty, childrenQty);
-//        
-//        System.out.println(result);
-//        return result;
-        
-//        for (int i = surname.length(); i < 30; ++i) {
-//            
-//        }
-        
-//        return String.format("%30s %14s %2d dorosłych %2d dzieci", surname,
-//                req, adultsQty, childrenQty);
-        
-        
-        
-//        String name = String.format("%30s", surname); 
-//        s.append(name);
-//        System.out.println(s.toString());
-//        if (isRequired) {
-//            s.append("    [wymagana]");
-//        }
-//        else {
-//            s.append("    [opcjonalna]");
-//        }
-//        s.append(": " + adultsQty + " dorosłych i " + childrenQty + " dzieci.");
-//        return s.toString();
     }
     
 }

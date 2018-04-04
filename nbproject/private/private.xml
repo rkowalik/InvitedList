@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/home/szarkii/Dropbox/Projects/Java/InvitedList/src/InvitedList/Invited.java</file>
+            <file>file:/home/szarkii/Dropbox/Projects/Java/InvitedList/src/InvitedList/JFrameGUI.java</file>
+            <file>file:/home/szarkii/Dropbox/Projects/Java/InvitedList/src/InvitedList/InvitedManager.java</file>
+            <file>file:/home/szarkii/Dropbox/Projects/Java/InvitedList/src/InvitedList/Family.java</file>
+            <file>file:/home/szarkii/Dropbox/Projects/Java/InvitedList/src/InvitedList/DataManager.java</file>
+            <file>file:/home/szarkii/Dropbox/Projects/Java/InvitedList/src/InvitedList/InvitedStatistics.java</file>
+        </group>
     </open-files>
 </project-private>

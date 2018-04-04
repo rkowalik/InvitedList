@@ -8,21 +8,22 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFormattedTextField;
+import javax.swing.JOptionPane;
 
 public final class JFrameGUI extends javax.swing.JFrame {
     
     private final String DATABASE_PATH = "database.ser";
 
     private final DataManager dbManager;
-    private final InvitersManager invManager;
-    private final InvitersStatistics statistics;
+    private final InvitedManager invManager;
+    private final InvitedStatistics statistics;
     
     public JFrameGUI() throws FileNotFoundException, IOException, ClassNotFoundException {
         initComponents();
         
-        dbManager = new DataManager(DATABASE_PATH);
-        invManager = dbManager.getDataFromFile();
-        statistics = new InvitersStatistics(invManager);
+        dbManager = new SerializeManager(DATABASE_PATH);
+        invManager = dbManager.getData();
+        statistics = new InvitedStatistics(invManager);
         
         adultCostField.setValue(invManager.getAdultCost());
         childCostField.setValue(invManager.getChildCost());
@@ -52,7 +53,7 @@ public final class JFrameGUI extends javax.swing.JFrame {
         if (fam.isProfitable()) p = 'T';
         
         return String.format("%-20s  %2d /%2d %9s %c/%c %6s %.50s", fam.getSurname(),
-                fam.getAdultCostQty(), fam.getChildSum(), "", r, p, "", fam.getInvitersNames());
+                fam.getAdultCostQty(), fam.getChildSum(), "", r, p, "", fam.getInvitedNames());
     }
     
     public boolean showFamily(Family fam) {
@@ -278,10 +279,13 @@ public final class JFrameGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_addFamilyBtnActionPerformed
 
     private void writeDatabaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_writeDatabaseActionPerformed
-        try {
-            dbManager.writeDataToFile(invManager);
-        } catch (IOException ex) {
-            Logger.getLogger(JFrameGUI.class.getName()).log(Level.SEVERE, null, ex);
+        if(dbManager.writeData(invManager)) {
+            JOptionPane.showMessageDialog(null, "Pomyślnie zapisano bazę danych.", 
+                    "Zapisano", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Błąd przy zapisie bazy danych.", 
+                    "Błąd", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_writeDatabaseActionPerformed
 

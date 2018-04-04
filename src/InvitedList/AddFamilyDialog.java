@@ -17,7 +17,7 @@ import javax.swing.DefaultComboBoxModel;
 public class AddFamilyDialog extends javax.swing.JDialog {
 
     
-    private final InvitersManager invManager;
+    private final InvitedManager invManager;
     private Family family;
     private final JFrameGUI parent;
     
@@ -25,7 +25,7 @@ public class AddFamilyDialog extends javax.swing.JDialog {
     private ArrayList<Invited> invitersBackup = null;
     private int editingFamilyID = -1;
     
-    public AddFamilyDialog(JFrameGUI parent, InvitersManager invManager) {
+    public AddFamilyDialog(JFrameGUI parent, InvitedManager invManager) {
         super(parent, true);
         initComponents();
         
@@ -39,7 +39,7 @@ public class AddFamilyDialog extends javax.swing.JDialog {
         setPersonTypeModel();
     }
     
-    public AddFamilyDialog(JFrameGUI parent, InvitersManager invManager, Family editingFamily) {
+    public AddFamilyDialog(JFrameGUI parent, InvitedManager invManager, Family editingFamily) {
         this(parent, invManager);
         
         this.editable = true;
@@ -70,7 +70,7 @@ public class AddFamilyDialog extends javax.swing.JDialog {
     
     private void setPersonTypeModel() {
         final DefaultComboBoxModel model;
-        model = new DefaultComboBoxModel(Invited.getInviterTypesDescriptions());
+        model = new DefaultComboBoxModel(Invited.getInvitedTypesDescriptions());
         personType.setModel(model);
     }
     
@@ -338,7 +338,7 @@ public class AddFamilyDialog extends javax.swing.JDialog {
         
         Invited inv = new Invited(inviterNameField.getText(), 
                 Invited.getTypeByDescription((String)personType.getSelectedItem()));
-        family.addInviter(inv);
+        family.addInvited(inv);
 
         inviterNameLabel.setForeground(Color.black);
         inviterNameField.setText("");
@@ -358,7 +358,7 @@ public class AddFamilyDialog extends javax.swing.JDialog {
 
     private void invitersListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invitersListMouseClicked
         if (evt.getClickCount() == 2) {
-            family.removeInviter(invitersList.getSelectedIndex());
+            family.removeInvited(invitersList.getSelectedIndex());
             updateInvitersList();
         }
     }//GEN-LAST:event_invitersListMouseClicked

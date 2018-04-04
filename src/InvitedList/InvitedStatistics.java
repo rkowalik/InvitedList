@@ -2,11 +2,11 @@ package InvitedList;
 
 import java.util.ArrayList;
 
-public class InvitersStatistics {
+public class InvitedStatistics {
     private int adultSum, adultWithCompSum, childSum, childAsAdultSum;
-    private final InvitersManager invManager;
+    private final InvitedManager invManager;
     
-    public InvitersStatistics(InvitersManager invManager) {
+    public InvitedStatistics(InvitedManager invManager) {
         this.invManager = invManager;
     }
     
